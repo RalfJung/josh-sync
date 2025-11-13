@@ -229,7 +229,7 @@ fn maybe_create_gh_pr(repo: &str, title: &str, description: &str) -> anyhow::Res
 
 fn get_josh_proxy(verbose: bool) -> anyhow::Result<JoshProxy> {
     println!("Updating/installing josh-proxy binary...");
-    match try_install_josh(verbose) {
+    match JoshProxy::lookup() {
         Some(proxy) => Ok(proxy),
         None => Err(anyhow::anyhow!("Could not install josh-proxy")),
     }
